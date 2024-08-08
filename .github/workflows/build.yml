@@ -14,7 +14,7 @@ jobs:
     runs-on: ${{ matrix.platform }}
     strategy:
       matrix:
-        platform: [windows-latest, macos-latest, ubuntu-latest, macos-13]
+        platform: [windows-latest, ubuntu-latest]
 
     steps:
       - name: Checkout code
