@@ -3,6 +3,7 @@ import json
 from objs import Blob
 from pathlib import Path
 
+
 class StagingArea:
     def __init__(self):
         self.path = os.path.join(".mogit", "staging.json")
@@ -14,7 +15,7 @@ class StagingArea:
         if not os.path.exists(path):
             with open(path, "w") as f:
                 json.dump([], f, indent=4)
-                    
+
     def add(self, filename, objs):
 
         with open(filename, "rb") as f:
@@ -24,7 +25,7 @@ class StagingArea:
         datas = json.load(open(self.path))
         datas.append({"name": filename, "hash": blob.hash})
         self.write(datas)
-        
+
     def write(self, data):
         with open(self.path, "w") as f:
             json.dump(data, f, indent=4)
@@ -44,7 +45,7 @@ class RepoData:
     def init():
         path = os.path.join(".mogit", "data.json")
         with open(path, "w") as f:
-            json.dump({'Branch':'main'}, f, indent=4)
+            json.dump({"Branch": "main"}, f, indent=4)
 
     def get(self, name):
         with open(self.path) as f:
@@ -63,7 +64,7 @@ class RepoData:
 class CommitLog(StagingArea):
     def __init__(self, config):
         self.config = config
-        
+
     def get_path(self):
         path = os.path.join(".mogit", "commits", f"{self.config.get('Branch')}.json")
         if not os.path.exists(path):
@@ -71,12 +72,12 @@ class CommitLog(StagingArea):
             with open(path, "w") as f:
                 json.dump([], f, indent=4)
         return path
-                
+
     def add(self, hashs):
         datas = json.load(open(self.get_path()))
         datas.append(hashs)
         self.write(datas)
-        
+
     def write(self, data):
         with open(self.get_path(), "w") as f:
             json.dump(data, f, indent=4)
@@ -86,6 +87,7 @@ class CommitLog(StagingArea):
 
     def get(self, n):
         return json.load(open(self.get_path()))[n]
+
 
 class Tags(RepoData):
     def __init__(self):
@@ -97,14 +99,15 @@ class Tags(RepoData):
         with open(path, "w") as f:
             json.dump({}, f, indent=4)
 
+
 class Config(RepoData):
     def __init__(self):
         self.path = os.path.join(Path.home(), ".mogitconfig")
-        
+
         if not os.path.exists(self.path):
             with open(self.path, "w") as f:
                 json.dump({}, f, indent=4)
-                
+
     def get(self, name):
         with open(self.path) as f:
             data = json.load(f)
