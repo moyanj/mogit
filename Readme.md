@@ -1,7 +1,7 @@
 # mogit
 
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
-[![Build Status](https://travis-ci.org/johndoe/mogit.svg?branch=master)](https://travis-ci.org/johndoe/mogit)
+[![Build Status](https://travis-ci.org/moyanj/mogit.svg?branch=main)](https://travis-ci.org/moyanj/mogit)
 
 ## 目录
 
