@@ -4,7 +4,7 @@
 [![Build Status](https://img.shields.io/github/actions/workflow/status/moyanj/mogit/build.yml)](https://github.com/moyanj/mogit/actions/workflows/build.yml)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/mogit)
 ![GitHub repo size](https://img.shields.io/github/repo-size/moyanj/mogit)
-![GitHub Repo stars](https://img.shields.io/github/stars/moyanj/AList3SDK?style=flat)
+![GitHub Repo stars](https://img.shields.io/github/stars/moyanj/mogit?style=flat)
 
 ## 目录
 
