@@ -1,7 +1,10 @@
 # mogit
 
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
-[![Build Status](https://travis-ci.org/moyanj/mogit.svg?branch=main)](https://travis-ci.org/moyanj/mogit)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/moyanj/mogit/build.yml)](https://github.com/moyanj/mogit/actions/workflows/build.yml)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/mogit)
+![GitHub repo size](https://img.shields.io/github/repo-size/moyanj/mogit)
+![GitHub Repo stars](https://img.shields.io/github/stars/moyanj/AList3SDK?style=flat)
 
 ## 目录
 
