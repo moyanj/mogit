@@ -28,7 +28,7 @@ lint: init
 	@black .
 	
 build_pypi: lint
-	$(PYTHON) setup.py bdist_wheel -d $(DIST_DIR) sdist -d $(DIST_DIR) bdist_egg -d $(DIST_DIR) 
+	$(PYTHON) setup.py bdist_wheel -d $(DIST_DIR) sdist -d $(DIST_DIR) 
 
 clean:
 ifeq ($(OS),Unix)

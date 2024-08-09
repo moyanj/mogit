@@ -65,8 +65,10 @@ class CommitLog(StagingArea):
     def __init__(self, config):
         self.config = config
 
-    def get_path(self):
-        path = os.path.join(".mogit", "commits", f"{self.config.get('Branch')}.json")
+    def get_path(self, branch=None):
+        if branch == None:
+            branch = self.config.get('Branch')
+        path = os.path.join(".mogit", "commits", f"{branch}.json")
         if not os.path.exists(path):
             os.makedirs(os.path.dirname(path), exist_ok=True)
             with open(path, "w") as f:
