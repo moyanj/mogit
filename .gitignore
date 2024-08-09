@@ -161,3 +161,4 @@ cython_debug/
 .idea/
 
 .mogit/
+test.py
