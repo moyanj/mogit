@@ -22,7 +22,7 @@ init:
 	@$(PYTHON) -m pip install -r requirements.dev.txt
 
 build: init
-	@$(BUILD) --onefile --name mogit $(SRC)/cli.py
+	@$(BUILD) --onefile --name mogit app.py
 
 lint: init
 	@black .
