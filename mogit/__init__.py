@@ -155,6 +155,7 @@ class MoGit:
         self.commits.write(all_commit)
 
     def switch_branch(self, name):
+        # 切换分支
         path = os.path.join(".mogit", "commits", f"{name}.json")
 
         if os.path.exists(path):
