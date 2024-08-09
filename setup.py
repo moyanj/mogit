@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="mogit",  # 包的名称
-    version="1.0.0",  # 版本号
+    version = "0.0.1",  # 版本号
     packages=find_packages(exclude=["tests", "tests.*"]),  # 包含的包
     author="MoYan",  # 作者
     author_email="moyan@moyanjdc.top",  # 作者邮箱
