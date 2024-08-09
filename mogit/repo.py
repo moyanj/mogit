@@ -1,6 +1,6 @@
 import os
 import json
-from objs import Blob
+from .objs import Blob
 from pathlib import Path
 
 

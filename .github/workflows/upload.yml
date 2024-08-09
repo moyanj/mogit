@@ -1,0 +1,24 @@
+# action的名称
+name: Upload Python Package
+
+on:
+  # 当master分支有push时，触发action
+  push:
+jobs:
+  deploy:
+    name: publish python package to PYPI
+    # 此作业在 Linux 上运行
+    runs-on: ubuntu-latest
+
+    steps:
+    # 此步骤使用 GitHub 的 https://github.com/actions/checkout
+    - uses: actions/checkout@v2
+
+    # 生成包并上传    
+    - name: Build and publish
+      env:
+        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      run: |
+        make build_pypi
+        twine upload dist/*

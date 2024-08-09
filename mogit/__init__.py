@@ -2,9 +2,9 @@ import os
 from hashlib import sha1
 import time
 
-from objs import MoGitStorage, Commit
-from repo import StagingArea, RepoData, CommitLog, Tags, Config
-import ignorefile
+from .objs import MoGitStorage, Commit
+from .repo import StagingArea, RepoData, CommitLog, Tags, Config
+from . import ignorefile
 
 
 class MoGit:

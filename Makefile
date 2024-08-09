@@ -1,6 +1,10 @@
 # Define variables
 PYTHON = python  # Use python3 if not specified
-BUILD= pyinstaller
+BUILD = pyinstaller
+SRC = mogit
+
+DIST_DIR := dist
+BUILD_DIR := build
 
 ifeq ($(OS),Windows_NT)
   OS := Windows
@@ -18,14 +22,17 @@ init:
 	@$(PYTHON) -m pip install -r requirements.dev.txt
 
 build: init
-	@$(BUILD) --onefile --name mogit src/main.py
+	@$(BUILD) --onefile --name mogit $(SRC)/main.py
 
 lint: init
 	@black .
 	
+build_pypi: lint
+	$(PYTHON) setup.py bdist_wheel -d $(DIST_DIR) sdist -d $(DIST_DIR) bdist_egg -d $(DIST_DIR) 
+
 clean:
 ifeq ($(OS),Unix)
-	rm -rf mogit.spec dist/ build/
+	rm -rf mogit.spec dist/ build/ mogit.egg-info/
 else
-	del mogit.spec dist/ build/
+	del mogit.spec dist/ build/ mogit.egg-info/
 endif

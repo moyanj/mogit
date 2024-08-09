@@ -1,5 +1,5 @@
-from mogit import MoGit
-from repo import Config
+from . import MoGit
+from .repo import Config
 import click
 import os
 
