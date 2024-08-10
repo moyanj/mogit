@@ -3,19 +3,22 @@ from hashlib import sha1
 import time
 
 from .objs import MoGitStorage, Commit
-from .repo import StagingArea, RepoData, CommitLog, Tags, Config
+from .repo import StagingArea, RepoData, CommitLog, Tags, Config, Branchs
 from . import ignorefile
 
 
 class MoGit:
     def __init__(self):
         self.base_dir = ".mogit"
-        self.objs = MoGitStorage(os.path.join(self.base_dir, "objs"))  # 源文件
-        self.staging_area = StagingArea()
-        self.config = RepoData()
-        self.app_config = Config()
-        self.commits = CommitLog(self.config)
-        self.tags = Tags()
+        self.objs = MoGitStorage(os.path.join(self.base_dir, "objs"))  # 存储管理器
+        self.staging_area = StagingArea(self) # 暂存区
+        
+        self.config = RepoData(self) # 仓库配置
+        self.app_config = Config() # 用户配置
+        
+        self.commits = CommitLog(self) # 提交管理器
+        self.branchs = Branchs(self) # 分支管理器
+        self.tags = Tags(self) # 标签管理器
 
         if not os.path.exists(self.base_dir):
             print("MoGit未初始化")
@@ -78,7 +81,7 @@ class MoGit:
         添加文件至暂存区
         """
         if os.path.isfile(file_path):
-            self.staging_area.add(file_path, self.objs)
+            self.staging_area.add(file_path)
 
         elif os.path.isdir(file_path):
             for path, dirs, files in os.walk(file_path):
@@ -86,7 +89,7 @@ class MoGit:
                     file_path = os.path.join(path, file)
 
                     if self.check_path(file_path):
-                        self.staging_area.add(file_path, self.objs)
+                        self.staging_area.add(file_path)
 
     def commit(self, message):
         """
@@ -150,23 +153,10 @@ class MoGit:
             print(f"Commit: {commit_hash}")
 
     def create_branch(self, name):
-        all_commit = self.commits.get_all()
-        self.config.set("Branch", name)
-        self.commits.write(all_commit)
-
+        self.branchs.add_branch(name)
+        
     def switch_branch(self, name):
-        # 切换分支
-        path = os.path.join(".mogit", "commits", f"{name}.json")
-
-        if os.path.exists(path):
-            self.config.set("Branch", name)
-        else:
-            print("分支不存在")
-        last_commit = self.commits.get(-1)
-        self.config.set("LastCommit", last_commit)
-        if last_commit:
-            self.checkout(last_commit)
-
+        self.branchs.switch(name)
 
 if __name__ == "__main__":
 

@@ -61,7 +61,7 @@ def log():
 
 @cli.command(help="分支操作")
 @click.argument("opcode")
-@click.option("-n", "--new")
+@click.option("-n", "--new", is_flag=True)
 def branch(opcode, new):
     mogit = MoGit()
     if new:
