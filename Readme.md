@@ -5,7 +5,7 @@
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/mogit)
 ![GitHub repo size](https://img.shields.io/github/repo-size/moyanj/mogit)
 ![GitHub Repo stars](https://img.shields.io/github/stars/moyanj/mogit?style=flat)
-
+# 现由于技术原因，无限期停更
 ## 目录
 
 - [简介](#简介)
